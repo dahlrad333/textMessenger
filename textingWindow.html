@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css">
+
+        <style>
+            .screen{
+                background-color: white;
+                height: 576px;
+                width: 324px;
+                display: inline-block;
+                border: solid 2px black;
+                position: relative;
+            }
+            .chatbox{
+                position:absolute;
+                width: 324px;
+                bottom: 25px;
+            }
+            .left{
+                text-align: left;
+            }
+            .buttonl{
+                background-color: pink;
+            }
+            .right{
+                text-align: right;
+            }
+            .buttonr{
+                background-color: lightblue;
+            }
+            .left-text{
+                display: inline-block;
+                background-color: pink;
+                width: 60% ;
+                padding: 4px;
+                margin: 5px;
+                border-radius: 5px;
+                position: relative;
+            }
+            .left-text::after{
+                position: absolute;
+                bottom: -7px;
+                left: 0px;
+                border-right: 10px solid transparent;
+                border-top: 10px solid pink;
+                content: '';
+            }
+            .right-text::after{
+                position: absolute;
+                bottom: -7px;
+                right: 0px;
+                border-left: 10px solid transparent;
+                border-top: 10px solid lightblue;
+                content: '';
+            }
+            .right-text{
+                display: inline-block;
+                background-color: lightblue;
+                width: 60% ;
+                padding: 4px;
+                margin: 5px;
+                border-radius: 5px;
+                position: relative;
+            }
+            .textInsert{
+                width: 100%;
+                position: absolute;
+                bottom: 0px;
+                text-align: center;
+            }
+        </style>
+        <script>
+
+        addRight = () => {
+            var newRightText = document.createElement("div");
+            newRightText.className = "right";
+            newRightText.innerHTML = `<div class = 'right-text'> ${document.getElementById('text').value} </div>`;
+            document.getElementById("chatbox").appendChild(newRightText);
+            document.getElementById("text").value = "";
+        }
+        addLeft = () => {
+            var newLeftText = document.createElement("div");
+            newLeftText.className = "left";
+            newLeftText.innerHTML = `<div class = 'left-text'> ${document.getElementById('text').value} </div>`;
+            document.getElementById("chatbox").appendChild(newLeftText);
+            document.getElementById("text").value = "";
+        }
+        </script>
+
+    </head>
+    <body >
+        <div class = "screen">
+        <div class = "chatbox" id = "chatbox">
+        </div>
+        <div class = "textInsert">
+            <button class = "buttonl" onClick = "addLeft()">Send</button>
+            <input id = "text"/>
+            <button class = "buttonr" onClick = "addRight()">Send</button>
+        </div>
+        </div>
+    </body>
+</html>
